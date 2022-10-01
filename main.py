@@ -17,7 +17,7 @@ import redis
 from rq import Queue
 
 
-os.environ["SECRET_KEY"]="38493290320383843"
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
