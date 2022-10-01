@@ -57,28 +57,28 @@ import os
 #         self.price = float(self.price)
 #         self.price = int(self.price)
 #
-#     def update(self,users,db):
-#         for user in users:
-#             for item in user.items:
-#                 self.response = requests.get(url=item.url, headers=self.headers)
-#                 self.webpage = self.response.text
-#                 self.soup = BeautifulSoup(self.webpage, "html.parser")
-#                 self.price_tag = self.soup.find(name="span", class_="a-offscreen")
-#                 self.price = self.price_tag.get_text()
-#                 self.price = self.price.split("₹")[1]
-#                 self.price = self.price.replace(",", "")
-#                 self.price = float(self.price)
-#                 self.price = int(self.price)
-#                 item.price=self.price
-#                 db.session.commit()
-#                 if self.price < int(item.low_price):
-#                     item.low_price = self.price
-#                     db.session.commit()
-#                     email = Send_Email(email=user.email, user=user, item=item)
-#                     email.low_price()
-#                 if self.price < int(item.budget):
-#                     email = Send_Email(email=user.email, user=user, item=item)
-#                     email.budget()
+    # def update(self,users,db):
+    #     for user in users:
+    #         for item in user.items:
+    #             self.response = requests.get(url=item.url, headers=self.headers)
+    #             self.webpage = self.response.text
+    #             self.soup = BeautifulSoup(self.webpage, "html.parser")
+    #             self.price_tag = self.soup.find(name="span", class_="a-offscreen")
+    #             self.price = self.price_tag.get_text()
+    #             self.price = self.price.split("₹")[1]
+    #             self.price = self.price.replace(",", "")
+    #             self.price = float(self.price)
+    #             self.price = int(self.price)
+    #             item.price=self.price
+    #             db.session.commit()
+    #             if self.price < int(item.low_price):
+    #                 item.low_price = self.price
+    #                 db.session.commit()
+    #                 email = Send_Email(email=user.email, user=user, item=item)
+    #                 email.low_price()
+    #             if self.price < int(item.budget):
+    #                 email = Send_Email(email=user.email, user=user, item=item)
+    #                 email.budget()
 
 class Amazon_Price:
     def __init__(self,url):
@@ -110,3 +110,24 @@ class Amazon_Price:
         price_tag = self.driver.find_element(By.CLASS_NAME, "a-price-whole")
         self.price = price_tag.text.replace(",","")
         self.driver.close()
+
+    def update(self, users, db):
+        for user in users:
+            for item in user.items:
+                self.driver.get(url=self.url)
+                price_tag = self.driver.find_element(By.CLASS_NAME, "a-price-whole")
+                self.price = price_tag.text.replace(",", "")
+                self.driver.close()
+                self.price = self.price.replace(",", "")
+                self.price = float(self.price)
+                self.price = int(self.price)
+                item.price = self.price
+                db.session.commit()
+                if self.price < int(item.low_price):
+                    item.low_price = self.price
+                    db.session.commit()
+                    email = Send_Email(email=user.email, user=user, item=item)
+                    email.low_price()
+                if self.price < int(item.budget):
+                    email = Send_Email(email=user.email, user=user, item=item)
+                    email.budget()
