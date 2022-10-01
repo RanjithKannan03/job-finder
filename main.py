@@ -163,6 +163,9 @@ def add():
         new_item.name=form.name.data
         new_item.url_name=product.name
         new_item.url=form.item_url.data
+        product_price = product.price.replace(",", "")
+        price = float(product_price)
+        price = int(price)
         new_item.price=price
         new_item.img_url=product.img_url
         new_item.budget=form.budget.data
