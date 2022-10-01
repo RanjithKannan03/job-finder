@@ -165,7 +165,8 @@ def add():
         new_item.url=form.item_url.data
         product_price = product.price.replace(",", "")
         print(product_price)
-        price = float(product_price)
+        if "," in product.price:
+            price = float(product_price)
         price = int(price)
         new_item.price=price
         new_item.img_url=product.img_url
