@@ -163,7 +163,8 @@ def add():
         new_item.name=form.name.data
         new_item.url_name=product.name
         new_item.url=form.item_url.data
-        product_price = product.price.replace(",", "")
+        if "," in product.price:
+            product_price = product.price.replace(",", "")
         price = float(product_price)
         price = int(price)
         new_item.price=price
@@ -188,7 +189,8 @@ def show_item(item_id):
     item=db.session.query(Items).get(item_id)
     product=Amazon_Price(url=item.url)
     product.get_price()
-    product_price = product.price.replace(",", "")
+    if "," in product.price:
+        product_price = product.price.replace(",", "")
     price = float(product_price)
     price = int(price)
     item.price=price
