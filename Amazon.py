@@ -8,6 +8,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from Email import Send_Email
+import os
 
 # class Amazon_Price:
 #     def __init__(self,url):
@@ -82,7 +83,7 @@ from Email import Send_Email
 class Amazon_Price:
     def __init__(self,url):
         self.url=url
-        chrome_driver_path = "C:\Development\chromedriver.exe"
+        chrome_driver_path = os.environ.get("CHROMEDRIVER_PATH")
         ser = Service(chrome_driver_path)
         op = webdriver.ChromeOptions()
         op.add_argument('headless')
