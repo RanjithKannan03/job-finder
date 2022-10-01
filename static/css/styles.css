@@ -116,7 +116,7 @@ font-family: 'Ubuntu', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
 
 .navbar .navbar-toggler{
-background-color:#1DB954;
+background-color:#ffffff;
 }
 
 .navbar .navbar-toggler-icon{
@@ -240,7 +240,12 @@ padding:20px 0px;
 
 .cta-btn{
 margin:20px;
-width:10%;
+width:15%;
+}
+
+@media only screen and (max-width:1080px) {
+.cta-btn{
+font-size:.7rem!important;
 }
 
 
