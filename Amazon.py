@@ -83,11 +83,16 @@ import os
 class Amazon_Price:
     def __init__(self,url):
         self.url=url
+        chrome_options=webdriver.ChromeOptions()
+        chrome_options.binary_location=os.environ.get("GOOGLE_CHROME_BIN")
+        chrome_options.add_argument("--headless")
+        chrome_options.add_argument("--disable-dev-shm-usage")
+        chrome_options.add_argument("--no-sandbox")
         chrome_driver_path = os.environ.get("CHROMEDRIVER_PATH")
-        ser = Service(chrome_driver_path)
-        op = webdriver.ChromeOptions()
-        op.add_argument('headless')
-        self.driver = webdriver.Chrome(service=ser, options=op)
+        # ser = Service(chrome_driver_path)
+        # op = webdriver.ChromeOptions()
+        # op.add_argument('headless')
+        self.driver = webdriver.Chrome(executable_path=chrome_driver_path,chrome_options=chrome_options)
 
     def get_add(self):
         self.driver.get(url=self.url)
