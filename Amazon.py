@@ -15,6 +15,15 @@ class Amazon_Price:
                 "Connection": "keep-alive",
                 "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36"
             }
+        self.http_proxy = "http://10.10.1.10:3128"
+        self.https_proxy = "https://10.10.1.11:1080"
+        self.ftp_proxy = "ftp://10.10.1.10:3128"
+
+        self.proxyDict = {
+            "http": self.http_proxy,
+            "https": self.https_proxy,
+            "ftp": self.ftp_proxy
+        }
 
     def get_add(self):
         self.response = requests.get(url=self.url, headers=self.headers)
