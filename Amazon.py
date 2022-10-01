@@ -19,7 +19,7 @@ class Amazon_Price:
     def get_add(self):
         self.response = requests.get(url=self.url, headers=self.headers)
         self.webpage = self.response.text
-        self.soup = BeautifulSoup(self.webpage, "lxml")
+        self.soup = BeautifulSoup(self.webpage, "html.parser")
         self.price_tag = self.soup.find(name="span", class_="a-offscreen")
         self.price = self.price_tag.get_text()
         self.price=self.price.split("₹")[1]
