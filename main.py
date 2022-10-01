@@ -188,7 +188,9 @@ def show_item(item_id):
     item=db.session.query(Items).get(item_id)
     product=Amazon_Price(url=item.url)
     product.get_price()
-    price=product.price
+    product_price = product.price.replace(",", "")
+    price = float(product_price)
+    price = int(price)
     item.price=price
     db.session.commit()
     if(price<int(item.low_price)):
