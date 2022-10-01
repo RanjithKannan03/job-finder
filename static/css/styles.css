@@ -246,6 +246,7 @@ width:15%;
 @media only screen and (max-width:1080px) {
 .cta-btn{
 font-size:.7rem!important;
+width:15%;
 }
 }
 
