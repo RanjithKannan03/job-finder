@@ -1,45 +1,53 @@
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
+import bs4
+from bs4 import BeautifulSoup
+import requests
+import lxml
 from Email import Send_Email
 
 class Amazon_Price:
     def __init__(self,url):
         self.url=url
-        chrome_driver_path = "C:\Development\chromedriver.exe"
-        ser = Service(chrome_driver_path)
-        op = webdriver.ChromeOptions()
-        op.add_argument('headless')
-        self.driver = webdriver.Chrome(service=ser, options=op)
+        self.headers = {
+                "Request Line": "GET / HTTP/1.1",
+                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+                "Accept-Encoding": "gzip, deflate",
+                "Accept-Language": "en-US,en;q=0.9",
+                "Connection": "keep-alive",
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36"
+            }
 
     def get_add(self):
-        self.driver.get(url=self.url)
-        name_tag=self.driver.find_element(By.ID,"productTitle")
-        self.name=name_tag.text
-        img_tag=self.driver.find_element(By.CSS_SELECTOR,".imgTagWrapper img")
-        self.img_url=img_tag.get_attribute("src")
-        price_tag=self.driver.find_element(By.CLASS_NAME,"a-price-whole")
-        self.price=price_tag.text
-        self.price = price_tag.text.replace(",", "")
-        self.price = int(self.price)
-        self.driver.close()
+        self.response = requests.get(url=self.url, headers=self.headers)
+        self.webpage = self.response.text
+        self.soup = BeautifulSoup(self.webpage, "lxml")
+        self.price_tag = self.soup.find(name="span", class_="a-offscreen")
+        self.price = self.price_tag.get_text()
+        self.price=self.price.replace(",","")
+        self.price=int(self.price)
+        self.title_tag = self.soup.find(name="span", id="productTitle")
+        self.name = self.title_tag.getText()
+        img_tag=self.soup.find(name="img",id="landingImage")
+        self.img_url=img_tag["src"]
 
     def get_price(self):
-        self.driver.get(url=self.url)
-        price_tag = self.driver.find_element(By.CLASS_NAME, "a-price-whole")
-        self.price = price_tag.text.replace(",","")
-        self.price=int(self.price)
-        self.driver.close()
+        self.response = requests.get(url=self.url, headers=self.headers)
+        self.webpage = self.response.text
+        self.soup = BeautifulSoup(self.webpage, "lxml")
+        self.price_tag = self.soup.find(name="span", class_="a-offscreen")
+        self.price = self.price_tag.get_text()
+        self.price = self.price.replace(",", "")
+        self.price = int(self.price)
 
     def update(self,users,db):
         for user in users:
             for item in user.items:
-                self.driver.get(url=item.url)
-                price_tag = self.driver.find_element(By.CLASS_NAME, "a-price-whole")
-                self.price = price_tag.text.replace(",", "")
+                self.response = requests.get(url=item.url, headers=self.headers)
+                self.webpage = self.response.text
+                self.soup = BeautifulSoup(self.webpage, "lxml")
+                self.price_tag = self.soup.find(name="span", class_="a-offscreen")
+                self.price = self.price_tag.get_text()
+                self.price = self.price.replace(",", "")
                 self.price = int(self.price)
-                self.driver.close()
                 item.price=self.price
                 db.session.commit()
                 if self.price < int(item.low_price):

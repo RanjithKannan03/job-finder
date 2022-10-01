@@ -230,7 +230,7 @@ def admin():
     jobs=q.jobs
     users = db.session.query(User).all()
     message=None
-    product=Amazon_Price()
+    product=Amazon_Price(url=users[0].item.url)
     task=q.enqueue(product.update,users,db)
     jobs=q.jobs
     return render_template('admin.html')
