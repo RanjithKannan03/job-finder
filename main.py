@@ -156,9 +156,8 @@ def add():
     if form.validate_on_submit():
         product=Amazon_Price(url=form.item_url.data)
         product.get_add()
-        product_price = product.price.replace(",", "")
-        price = float(product_price)
-        price = int(price)
+        product_price = product.price
+        price = product_price
         new_item=Items()
         new_item.name=form.name.data
         new_item.url_name=product.name
