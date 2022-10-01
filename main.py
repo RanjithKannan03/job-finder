@@ -154,8 +154,8 @@ def logout():
 def add():
     form=AddForm()
     if form.validate_on_submit():
-        product=Amazon_Price(url=form.item_url.data)
         print(form.item_url.data)
+        product=Amazon_Price(url=form.item_url.data)
         product.get_add()
         product_price = product.price
         price = product_price
