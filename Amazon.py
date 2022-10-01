@@ -37,6 +37,7 @@ class Amazon_Price:
         self.soup = BeautifulSoup(self.webpage, "lxml")
         self.price_tag = self.soup.find(name="span", class_="a-offscreen")
         self.price = self.price_tag.get_text()
+        self.price = self.price.split("₹")[1]
         self.price = self.price.replace(",", "")
         self.price = float(self.price)
         self.price = int(self.price)
@@ -49,6 +50,7 @@ class Amazon_Price:
                 self.soup = BeautifulSoup(self.webpage, "lxml")
                 self.price_tag = self.soup.find(name="span", class_="a-offscreen")
                 self.price = self.price_tag.get_text()
+                self.price = self.price.split("₹")[1]
                 self.price = self.price.replace(",", "")
                 self.price = float(self.price)
                 self.price = int(self.price)

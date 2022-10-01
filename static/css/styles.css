@@ -173,7 +173,7 @@ header.masthead .site-heading h1 {
   header.masthead .page-heading,
   header.masthead .post-heading,
   header.masthead .site-heading {
-    padding: 200px 0;
+    adding: 200px 0;
   }
 }
 
@@ -311,6 +311,7 @@ width:50%;
 text-align:center;
 }
 
+
 .cart-img
 {
 width:30%;
@@ -320,6 +321,15 @@ margin-right:20%;
 .cart-text{
 text-align:center;
 margin-top:5%;
+}
+
+@media only screen and (max-width:1080px) {
+.cart-text-h3 {
+font-size:1.5rem!important;
+}
+.cart-text a{
+font-size:1rem;
+}
 }
 
 .cart-text-h3{
