@@ -1,0 +1,48 @@
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% include "header.html" %}
+
+<!-- Page Header -->
+
+<header class="masthead" style="background-image: url({{url_for('static', filename='img/Home-page.png')}})">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Settings</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<section class="white-section" id="settings">
+    <div class="container-fluid settings">
+        <div class="container">
+            <div class="col">
+            <div class="settings-form mx-auto">
+                <h3 class="settings-text">Change Name</h3>
+                {{wtf.quick_form(form=name_form,novalidate=True,button_map={"submit":"warning"})}}
+            </div>
+                <hr>
+                <div class="settings-form mx-auto">
+                    <h3 class="settings-text">Change Password</h3>
+                    {% with messages=get_flashed_messages() %}
+                        {% if messages %}
+                            {% for message in messages %}
+                                <p style="color:red">{{message}}</p>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                    {{wtf.quick_form(form=pass_form,novalidate=True,button_map={"submit":"warning"})}}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+{% include "footer.html" %}

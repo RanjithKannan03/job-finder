@@ -1,0 +1,27 @@
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% include "header.html" %}
+
+
+<section class="colored-section" id="item-page">
+    <div class="container-fluid">
+        <img src="{{item.img_url}}">
+    </div>
+    <div class="container-fluid item-description">
+        <h1>{{item.name}}</h1>
+        <h3>{{item.url_name}}</h3>
+        <h3 class="current-price">Current price: {{item.price}}</h3>
+        <h3 class="low-price">Lowest price: {{item.low_price}}</h3>
+        <a href="{{item.url}}" class="store-link"><h4>Vist Store Page</h4></a>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+{% include "footer.html" %}

@@ -1,0 +1,38 @@
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% include "header.html" %}
+
+<!-- Page Header -->
+
+<header class="masthead" style="background-image: url({{url_for('static', filename='img/Home-page.png')}})">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Add</h1>
+            <span class="subheading">Add items to your cart</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+<section class="white-section" id="add">
+    <div class="container-fluid">
+        <div class="col">
+            <div class="add-text">
+                <h3>Add</h3>
+            </div>
+            <div class="add-form mx-auto">
+                {{wtf.quick_form(form=form,novalidate=True,button_map={"submit":"warning"})}}
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+{% include "footer.html" %}

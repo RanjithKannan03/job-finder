@@ -1,0 +1,40 @@
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% include "header.html" %}
+
+<!-- Page Header -->
+
+<header class="masthead" style="background-image: url({{url_for('static', filename='img/Home-page.png')}})">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Cart</h1>
+            <span class="subheading">Purchase your items at great discounts</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<section class="white-section" id="cart">
+    {% for item in current_user.items %}
+    <div class="container-fluid">
+            <div class="row">
+                <img class="cart-img" src="{{item.img_url}}">
+                <div class="cart-text">
+                    <h3 class="cart-text-h3">{{item.name}}</h3>
+                    <a href="{{ url_for('show_item',item_id=item.id) }}">
+                        <h2>View Item</h2>
+                    </a>
+                    <a href="{{url_for('delete',item_id=item.id)}}" style="color:red">✘</a>
+                </div>
+            </div>
+        <hr>
+    </div>
+    {% endfor %}
+</section>
+
+
+{% include "footer.html" %}
