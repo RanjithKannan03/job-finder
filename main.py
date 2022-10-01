@@ -228,17 +228,51 @@ def settings():
             return redirect(url_for('home'))
     return render_template('settings.html',name_form=name_form,pass_form=pass_form,logged_in=current_user.is_authenticated)
 
-@app.route('/message',methods=["GET","POST"])
+@app.route('/message/<int:i>/<int:j>',methods=["GET","POST"])
 @login_required
 @admin_only
-def admin():
-    jobs=q.jobs
+def admin(i,j):
+    # jobs=q.jobs
     users = db.session.query(User).all()
-    message=None
-    product=Amazon_Price(url=users[0].item.url)
-    task=q.enqueue(product.update,users,db)
-    jobs=q.jobs
-    return render_template('admin.html')
+    # message=None
+    # product=Amazon_Price(url=users[0].item.url)
+    # task=q.enqueue(product.update,users,db)
+    # jobs=q.jobs
+    # return render_template('admin.html')
+    user = users[i]
+    items = user.items
+    item = items[j]
+    product = Amazon_Price(url=item.url)
+    product.get_price()
+    product_price = product.price
+    new_price = float(product_price)
+    new_price = int(new_price)
+    item.price = new_price
+    db.session.commit()
+    if new_price < int(item.low_price):
+        item.low_price = new_price
+        db.session.commit()
+        email = Send_Email(email=user.email, user=user, item=item)
+        email.low_price()
+    if new_price < int(item.budget):
+        email = Send_Email(email=user.email, user=user, item=item)
+        email.budget()
+    j += 1
+    if j >= len(items):
+        j = 0
+        i += 1
+        if i >= len(users):
+            i = 1
+            j = 0
+            return redirect(url_for('home'))
+        return redirect(url_for('admin', i=i, j=j))
+    elif i >= len(users):
+        i = 1
+        j = 0
+        return redirect(url_for('home'))
+    else:
+        return redirect(url_for('admin', i=i, j=j))
+    return render_template("admin.html")
 
 
 
