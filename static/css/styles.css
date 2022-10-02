@@ -346,6 +346,15 @@ font-size:1rem;
 }
 }
 
+@media only screen and (max-width:1080px) {
+.cart-text-h3 {
+font-size:1rem!important;
+}
+.cart-text a{
+font-size:.75rem;
+}
+}
+
 .cart-text-h3{
 font-family:"Montserrat";
 font-size:2rem;
