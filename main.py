@@ -241,6 +241,8 @@ def admin(i,j):
     # return render_template('admin.html')
     user = users[i]
     items = user.items
+    if j >= len(items):
+        return redirect(url_for('home'))
     item = items[j]
     product = Amazon_Price(url=item.url)
     product.get_price()
