@@ -337,23 +337,6 @@ text-align:center;
 margin-top:5%;
 }
 
-@media only screen and (max-width:1080px) {
-.cart-text-h3 {
-font-size:1.5rem!important;
-}
-.cart-text a{
-font-size:1rem;
-}
-}
-
-@media only screen and (max-width:1080px) {
-.cart-text-h3 {
-font-size:1rem!important;
-}
-.cart-text a{
-font-size:.75rem;
-}
-}
 
 .cart-text-h3{
 font-family:"Montserrat";
@@ -374,6 +357,25 @@ hr{
 background-color:#000000;
 border-top:2px solid;
 }
+
+@media only screen and (max-width:1080px) {
+.cart-text-h3 {
+font-size:1.5rem!important;
+}
+.cart-text a{
+font-size:1rem;
+}
+}
+
+@media only screen and (max-width:750px) {
+.cart-text-h3 {
+font-size:1rem!important;
+}
+.cart-text a{
+font-size:.75rem;
+}
+}
+
 
 /* Item Page */
 
