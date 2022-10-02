@@ -1,3 +1,10 @@
+::selection {
+  color: #fff;
+  background: #ff9900;
+  text-shadow: none;
+}
+
+
 .container-fluid{
 padding:7% 15%;
 }
