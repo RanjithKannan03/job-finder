@@ -1,1 +1,0 @@
-The price of [Product] is now [Price],below your target price. Buy Now!

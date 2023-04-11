@@ -10,7 +10,7 @@ padding:7% 15%;
 }
 
 .colored-section{
-background-color:#ff9900;
+background-color:#81C6E8;
 }
 
 .white-section{
@@ -203,7 +203,7 @@ header.masthead .site-heading .subheading {
   line-height: 1.1;
   display: block;
   margin: 10px 0 0;
-  font-family: "Dancing Script";
+  font-family: "Roboto Slab";
 }
 
 @media only screen and (min-width: 1080px) {
@@ -214,87 +214,57 @@ header.masthead .site-heading .subheading {
 }
 
 
-/* Features */
-
-#features{
-text-align:center;
-}
-
-.feature-title{
-font-family:"Montserrat";
-font-weight:600;
-font-size:1.5rem;
-}
-
-.icon{
-padding:10px;
-}
-
-/* cta */
+/* CTA */
 
 #cta{
 text-align:center;
 }
 
-.cta-heading
-{
-color:#ffffff;
-font-family:"Montserrat";
+.cta-heading{
+padding:20px;
+font-family:"Roboto Slab";
+font-size:2rem;
 font-weight:600;
+}
+
+.cta-btn{
+margin:5%;
+}
+
+/* Features */
+
+.features-box{
+text-align:center;
+}
+
+.features-title{
+font-family:Montserrat;
+font-size:1.5rem;
+font-weight:600;
+}
+
+.icon{
+padding:10%;
+}
+
+/* Choice */
+
+#choice{
+text-align:center;
+padding:30%;
+}
+
+.choice-text{
+font-font:Montserrat;
 font-size:3rem;
-padding:20px 0px;
+font-weight:900;
 }
 
-.cta-btn{
-margin:20px;
-width:20%;
-}
-
-@media only screen and (max-width:1080px) {
-.cta-btn{
-font-size:.7rem!important;
-width:15%;
-}
-}
-
-@media only screen and (max-width:800px) {
-.cta-btn{
-font-size:.5rem!important;
-width:20%;
-}
-}
-
-
-
-/* Carousel */
-
-
-.carousel-img{
-margin:10%;
-width:30%!important;
-text-align:center;
-}
-
-.carousel-item{
-text-align:center;
-}
-
-.carousel-text{
-font-family:"Montserrat";
-text-align:center;
-}
-
-#product-carousel a{
-color:#000000;
+.choice-btn{
+margin:5%;
 }
 
 /* Login */
-.login-text h3{
-text-align:center;
-font-family:"Montserrat";
-font-size:2.5rem;
-font-weight:600;
-}
 
 .login-form{
 width:50%;
@@ -302,138 +272,94 @@ width:50%;
 
 /* Register */
 
-
-.register-text h3{
-text-align:center;
-font-family:"Montserrat";
-font-size: 2.5rem;
-font-weight:600;
-}
-
 .register-form{
 width:50%;
 }
 
-/* Add */
+/* Details */
 
-.add-text h3{
-text-align:center;
-font-family:"Montserrat";
-font-size: 2.5rem;
-font-weight:600;
-}
-
-.add-form{
-width:50%;
-}
-
-/* Cart */
-.cart{
-text-align:center;
-}
-
-
-.cart-img
-{
-width:30%;
-margin-right:20%;
-}
-
-.cart-text{
-text-align:center;
-margin-top:5%;
-}
-
-
-.cart-text-h3{
-font-family:"Montserrat";
-font-size:2rem;
-font-weight:600;
-margin:20% 0% 10%;
-}
-
-.cart-text a{
-font-family:"Montserrat";
-font-size:1.2rem;
-font-weight:500;
-margin:10% 0%;
-color:#000000;
-}
-
-hr{
-background-color:#000000;
-border-top:2px solid;
-}
-
-@media only screen and (max-width:1080px) {
-.cart-text-h3 {
-font-size:1.5rem!important;
-}
-.cart-text a{
-font-size:1rem;
-}
-}
-
-@media only screen and (max-width:750px) {
-.cart-text-h3 {
-font-size:1rem!important;
-}
-.cart-text a{
-font-size:.75rem;
-}
-}
-
-
-/* Item Page */
-
-#item-page{
-text-align:center;
-}
-
-.item-description{
-background-color:#ffffff;
-}
-
-.item-description h1{
-font-family:"Montserrat";
-font-weight:600;
-padding: 3%;
-}
-
-.item-description h3{
-font-family:"Montserrat";
-font-weight:600;
-padding:3%;
-}
-
-.item-description h4{
-font-family:"Montserrat";
-font-weight:600;
-padding:3%;
-}
-
-.store-link
-{
-color:#000000;
-}
-
-.low-price{
-color:green;
-}
-
-/* Settings */
-
-.settings-form{
-width:50%;
-}
-
-.settings-text{
-font-family:"Montserrat";
-font-weight:600;
-padding:4% 0%;
+#info{
 text-align:left;
 }
 
+#details .info-text p{
+display:inline-block;
+}
+
+
+#details .profile-pic{
+border-radius:100%;
+width:20%;
+margin:5% 5% 5% 0;
+}
+
+#edit-pic{
+display:inline-block;
+}
+
+#edit-pic input{
+margin:1%;
+padding: 5px 10px;
+border-radius: 5px;
+border: 1px ridge black;
+font-size: 0.8rem;
+}
+
+/* Add Job */
+
+.job-form{
+width:50%;
+}
+
+
+/* Job List */
+
+.col-heading{
+font-family:"Ubuntu";
+font-size:1.25rem;
+}
+
+.table-row a{
+font-family:"Ubuntu";
+color:#000000;
+}
+
+/* View Job Employee */
+
+p{
+font-family:"Ubuntu";
+}
+
+.edit-btn{
+margin-left:20%;
+}
+
+
+
+/* Employee Home */
+
+#search-bar .btn{
+padding:0;
+width:7rem;
+}
+
+#job-search{
+height:3rem;
+}
+
+
+/* Search List */
+
+
+.col-heading{
+font-family:"Ubuntu";
+font-size:1.25rem;
+}
+
+.table-row a{
+font-family:"Ubuntu";
+color:#000000;
+}
 
 /* Footer */
 Footer
@@ -450,3 +376,4 @@ font-weight:400;
 padding-top:40px;
 padding-bottom:100px;
 }
+
