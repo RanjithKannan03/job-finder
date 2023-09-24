@@ -3,8 +3,8 @@
 {% include "header.html" %}
 
 <!-- Page Header -->
-
-<header class="masthead" style="background-color:#81C6E8">
+<section class="colored-section">
+<header class="masthead">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
@@ -18,16 +18,15 @@
   </header>
 
 
-<section class="white-section">
     <div class="container-fluid" id="edit-job">
         <div class="col">
             <div class="job-form mx-auto">
                 {{ ckeditor.load() }}
                 {{ ckeditor.config(name='description') }}
-                {{ wtf.quick_form(form=form,novalidate=True,button_map={"submit":"dark"}) }}
+                {{ wtf.quick_form(form=form,novalidate=True,button_map={"submit":"outline-light"}) }}
             </div>
         </div>
     </div>
-</section>
+
 
 {% include "footer.html" %}

@@ -56,15 +56,6 @@
         <li class="nav-item">
         <a class="nav-link navbar-text" href="{{url_for('logout')}}">Logout</a>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle navbar-text" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Profile
-        </a>
-        <div class="dropdown-menu navbar-custom" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item navbar-text" href="{{url_for('details')}}">Details</a>
-          <a class="dropdown-item navbar-text" href="#">Settings</a>
-        </div>
-      </li>
         {% if current_user.status==0 %}
         <li class="nav-item">
         <a class="nav-link navbar-text" href="{{url_for('add_job')}}">Add</a>
@@ -73,6 +64,15 @@
         <a class="nav-link navbar-text" href="{{url_for('job_list')}}">List</a>
       </li>
         {% endif %}
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle navbar-text" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Profile
+        </a>
+        <div class="dropdown-menu navbar-custom" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item navbar-text" href="{{url_for('details')}}">Details</a>
+          <a class="dropdown-item navbar-text" href="{{url_for('settings')}}">Settings</a>
+        </div>
+      </li>
        {% endif %}
     </ul>
   </div>

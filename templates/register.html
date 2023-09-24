@@ -4,7 +4,9 @@
 
 <!-- Page Header -->
 
-<header class="masthead" style="background-color:#81C6E8">
+<section class="colored-section" id="register">
+
+<header class="masthead">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
@@ -17,7 +19,7 @@
     </div>
   </header>
 
-<section class="colored-section" id="register">
+
     <div class="container-fluid">
         <div class="col">
             {% with messages=get_flashed_messages() %}
@@ -31,12 +33,12 @@
                 {{ ckeditor.load() }}
                 {{ ckeditor.config(name='about') }}
                 {{ ckeditor.config(name='address') }}
-                {{wtf.quick_form(form=form,novalidate=True,button_map={"submit":"dark"})}}
+                {{wtf.quick_form(form=form,novalidate=True,button_map={"submit":"outline-light"})}}
             </div>
         </div>
     </div>
 
-</section>
+
 
 
 

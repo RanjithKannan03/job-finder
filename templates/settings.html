@@ -10,31 +10,27 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="site-heading">
-            <h1>Add Job</h1>
+            <h1>Settings</h1>
           </div>
         </div>
       </div>
     </div>
   </header>
 
-
-
-    <div class="container-fluid" id="add-job">
+ <div class="container-fluid" id="settings">
         <div class="col">
-            {% with messages=get_flashed_messages() %}
-                {% if messages %}
-                    {% for message in messages %}
-                        <p style="color:red">{{message}}</p>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
             <div class="job-form mx-auto">
                 {{ ckeditor.load() }}
-                {{ ckeditor.config(name='description') }}
+                {{ ckeditor.config(name='about') }}
+                {{ ckeditor.config(name='address') }}
                 {{ wtf.quick_form(form=form,novalidate=True,button_map={"submit":"outline-light"}) }}
             </div>
         </div>
     </div>
+
+
+
+
 
 
 

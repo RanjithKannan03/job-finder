@@ -4,7 +4,9 @@
 
 <!-- Page Header -->
 
-<header class="masthead" style="background-color:#81C6E8">
+<section class="colored-section">
+
+<header class="masthead">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
@@ -17,13 +19,14 @@
     </div>
   </header>
 
-<section class="white-section">
+
     <div class="container-fluid" id="job">
         <article class="mb-4">
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-md-10 col-lg-8 col-xl-7">
-                        <p>{{job.description|safe}}</p>
+                    <div class="col-md-10 col-lg-8 col-xl-7" id="job-desc">
+                        <h2>Description:</h2>
+                        <p class="job-description">{{job.description|safe}}</p>
                     </div>
                 </div>
             </div>
@@ -34,7 +37,7 @@
             <p>Posted By: {{job.author.name}}</p>
         {% endif %}
     </div>
-</section>
+
 
 
 

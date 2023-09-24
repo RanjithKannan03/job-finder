@@ -5,7 +5,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import relationship
 from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user
-from flask_gravatar import Gravatar
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField, IntegerField
 from wtforms.validators import DataRequired, URL
@@ -108,6 +107,14 @@ class JobForm(FlaskForm):
     description= CKEditorField("Description",validators=[DataRequired()])
     submit=SubmitField("Post")
 
+class SettingsForm(FlaskForm):
+    name=StringField("Name")
+    email=StringField("Email")
+    about=CKEditorField("About")
+    org_name=StringField("Organization Name")
+    address=CKEditorField("Address")
+    submit=SubmitField("Edit")
+
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -120,7 +127,7 @@ def home():
         if current_user.status==1:
             return render_template("home_employee.html",logged_in=current_user.is_authenticated)
         else:
-            return render_template("index.html",looged_in=current_user.is_authenticated)
+            return render_template("index.html",logged_in=current_user.is_authenticated)
 
     return render_template("index.html",logged_in=current_user.is_authenticated)
 
@@ -302,8 +309,19 @@ def search_list():
             return render_template('search_list.html',jobs=jobs,logged_in=current_user.is_authenticated)
 
 
-
-
+@app.route('/settings',methods=["POST","GET"])
+@login_required
+def settings():
+    form=SettingsForm(name=current_user.name,email=current_user.email,about=current_user.about,org_name=current_user.organization_name,address=current_user.address)
+    if form.validate_on_submit():
+        current_user.name=form.name.data
+        current_user.email=form.email.data
+        current_user.about=form.about.data
+        current_user.organization_name=form.org_name.data
+        current_user.address=form.address.data
+        db.session.commit()
+        return redirect(url_for('details'))
+    return render_template('settings.html',form=form,logged_in=current_user.is_authenticated)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000, debug=True)

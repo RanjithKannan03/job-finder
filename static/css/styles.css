@@ -10,7 +10,7 @@ padding:7% 15%;
 }
 
 .colored-section{
-background-color:#81C6E8;
+background-image: linear-gradient(to right,#AA77FF,#62CDFF);
 }
 
 .white-section{
@@ -139,7 +139,7 @@ color:#000000;
 header.masthead {
   margin-bottom: 50px;
   background: no-repeat center center;
-  background-color: #868e96;
+
   background-attachment: scroll;
   position: relative;
   background-size: cover;
@@ -152,7 +152,7 @@ header.masthead .overlay {
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: #212529;
+
   opacity: 0.5;
 }
 
@@ -198,9 +198,9 @@ header.masthead .site-heading h1 {
 
 header.masthead .page-heading .subheading,
 header.masthead .site-heading .subheading {
-  font-size: 35px;
+  font-size: 2rem;
   font-weight: 300;
-  line-height: 1.1;
+  line-height: 1.5;
   display: block;
   margin: 10px 0 0;
   font-family: "Roboto Slab";
@@ -212,6 +212,7 @@ header.masthead .site-heading .subheading {
     font-size: 80px;
   }
 }
+
 
 
 /* CTA */
@@ -235,6 +236,10 @@ margin:5%;
 
 .features-box{
 text-align:center;
+}
+
+.features-box i,h3{
+color:#ffffff;
 }
 
 .features-title{
@@ -330,6 +335,17 @@ p{
 font-family:"Ubuntu";
 }
 
+#job-desc{
+font-size:1.5rem;
+}
+
+#job-desc h2{
+font-family:"Ubuntu";
+font-size:1.75rem;
+font-weight:700;
+margin:10% 0;
+}
+
 .edit-btn{
 margin-left:20%;
 }
@@ -341,7 +357,10 @@ margin-left:20%;
 #search-bar .btn{
 padding:0;
 width:7rem;
+background-color:#AA77FF;
 }
+
+
 
 #job-search{
 height:3rem;
@@ -349,6 +368,8 @@ height:3rem;
 
 
 /* Search List */
+
+
 
 
 .col-heading{
@@ -361,10 +382,14 @@ font-family:"Ubuntu";
 color:#000000;
 }
 
+
+
+
+
+
 /* Footer */
 Footer
 {
-background-color:#ffffff;
 text-align:center;
 font-weight:600;
 }
